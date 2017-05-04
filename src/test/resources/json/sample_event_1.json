@@ -1,0 +1,16 @@
+// Sample JSON event which our Kinesis accepts
+// Change it to match your event structure
+{
+  "id": "edf0177b-634c-537d-f019-b99e4fbdb193",
+  "type": "EventType",
+  "attributes": {
+    "triggeredBy": "rex",
+    "version": 1,
+    "payload": {
+      "CDF_GUID": "${guid}"
+    },
+    "source": "gatling-test",
+    "sentAt": "${sentAt}",
+    "sourceEnvironment": "PERF ENV"
+  }
+}

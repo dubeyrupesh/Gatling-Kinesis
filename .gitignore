@@ -1,0 +1,10 @@
+target/
+lib_managed/
+src_managed/
+project/boot/
+logs.tar.gz
+.idea
+*.iml
+
+*.swp
+project/project/
