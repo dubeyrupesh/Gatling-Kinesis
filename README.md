@@ -6,8 +6,16 @@ using Gatling
 Installation list
 =========================
 1. SBT 
+2. AWS_CLI 
+3. SCALA
 
 This project uses SBT 0.13.15, which is available [here](http://www.scala-sbt.org/download.html).
+
+LogIn to AWS_CLI
+---------
+```bash
+aws-adfs login --profile default --adfs-host <Your Host> --region <region>
+```
 
 Start SBT
 ---------
