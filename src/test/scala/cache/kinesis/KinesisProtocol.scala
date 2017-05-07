@@ -1,4 +1,4 @@
-package ledgercache.kinesis
+package cache.kinesis
 
 import java.nio.ByteBuffer
 
@@ -7,7 +7,7 @@ import com.amazonaws.regions.Region
 import com.amazonaws.services.kinesis.AmazonKinesisClient
 import com.amazonaws.services.kinesis.model.{PutRecordsRequest, PutRecordsRequestEntry}
 import io.gatling.core.protocol._
-import ledgercache.infrastructure.{EventConfig, EventFileLoader}
+import cache.infrastructure.{EventConfig, EventFileLoader}
 import org.joda.time.DateTime
 
 import scala.collection.JavaConverters._

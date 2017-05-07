@@ -1,4 +1,4 @@
-package ledgercache.infrastructure
+package cache.infrastructure
 
 import com.amazonaws.regions.Regions
 

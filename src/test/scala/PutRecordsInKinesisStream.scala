@@ -1,8 +1,8 @@
 import io.gatling.core.Predef._
 import io.gatling.core.structure.ScenarioBuilder
-import ledgercache.helpers.Helpers
-import ledgercache.infrastructure.{Event, EventConfig}
-import ledgercache.kinesis.{KinesisActionBuilder, KinesisProtocol}
+import cache.helpers.Helpers
+import cache.infrastructure.{Event, EventConfig}
+import cache.kinesis.{KinesisActionBuilder, KinesisProtocol}
 import scala.concurrent.duration._
 
 class PutRecordsInKinesisStream extends Simulation{

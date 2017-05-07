@@ -1,4 +1,4 @@
-package ledgercache.infrastructure
+package cache.infrastructure
 
 object Event extends Enumeration {
   val Event1 = "Event1"

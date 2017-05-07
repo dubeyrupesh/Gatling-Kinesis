@@ -2,8 +2,12 @@
 This project aims at doing performance testing of AWS Kinesis stream
 using Gatling 
 
+Currently it allows you to putRecords in your kinesis Stream via Gatling.
 
-Installation list
+A typical Kinesis Test will look like the following : 
+![Alt text](/examples/sample_kinesis_lambda-infra.jpg)
+
+Requirement
 =========================
 1. SBT 
 2. AWS_CLI 

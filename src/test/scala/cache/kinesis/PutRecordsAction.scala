@@ -1,4 +1,4 @@
-package ledgercache.kinesis
+package cache.kinesis
 
 import io.gatling.commons.stats.OK
 import io.gatling.commons.util.TimeHelper

@@ -1,4 +1,4 @@
-package ledgercache.infrastructure
+package cache.infrastructure
 
 import java.nio.file.Paths
 import scala.io.Source

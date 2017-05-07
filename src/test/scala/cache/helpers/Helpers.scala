@@ -1,4 +1,4 @@
-package ledgercache.helpers
+package cache.helpers
 
 import io.gatling.core.Predef.ElFileBody
 import io.gatling.http.Predef.http

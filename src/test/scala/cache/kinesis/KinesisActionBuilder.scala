@@ -1,4 +1,4 @@
-package ledgercache.kinesis
+package cache.kinesis
 
 import akka.actor.Props
 import io.gatling.core.action.builder.ActionBuilder
