@@ -3,18 +3,25 @@ package cache.kinesis
 import java.nio.ByteBuffer
 
 import com.amazonaws.AmazonClientException
-import com.amazonaws.regions.Region
-import com.amazonaws.services.kinesis.AmazonKinesisClient
+import com.amazonaws.regions.{Region, Regions}
+import com.amazonaws.services.kinesis.{AmazonKinesis, AmazonKinesisClient, AmazonKinesisClientBuilder}
 import com.amazonaws.services.kinesis.model.{PutRecordsRequest, PutRecordsRequestEntry}
 import io.gatling.core.protocol._
 import cache.infrastructure.{EventConfig, EventFileLoader}
 import org.joda.time.DateTime
+import com.amazonaws.AmazonWebServiceClient
+import com.amazonaws.auth.profile.ProfileCredentialsProvider
+import com.amazonaws.auth.{AWSCredentialsProvider, AWSStaticCredentialsProvider, DefaultAWSCredentialsProviderChain}
+import com.amazonaws.services.kinesis
 
 import scala.collection.JavaConverters._
 
 class KinesisProtocol(config : EventConfig,kinesisStream: String) extends Protocol {
-  val kinesisClient = new AmazonKinesisClient()
-  kinesisClient.setRegion(Region.getRegion(config.region))
+
+//    AWSCredentialsProvider credentialsProvider = new AWSCredentialsProvider();
+     val kinesisClient: AmazonKinesis = AmazonKinesisClientBuilder.standard()
+       .withRegion(Regions.US_EAST_2).withCredentials(new ProfileCredentialsProvider("sam_project"))
+                                            .build();
   checkIsAuthorised(kinesisClient)
 
   def putRecords(data_blob_count : Int):Unit = {
@@ -31,6 +38,7 @@ class KinesisProtocol(config : EventConfig,kinesisStream: String) extends Protoc
     val request = new PutRecordsRequest()
     request.setStreamName(kinesisStream)
     request.setRecords(eventList)
+    println(request)
     kinesisClient.putRecords(request)
   }
 
@@ -45,14 +53,17 @@ class KinesisProtocol(config : EventConfig,kinesisStream: String) extends Protoc
     EventFileLoader.getEventJson(config.eventType)
   }
 
-  private def checkIsAuthorised(kinesisClient: AmazonKinesisClient) {
+  private def checkIsAuthorised(kinesisClient: AmazonKinesis) {
     try {
-      kinesisClient.describeStream(kinesisStream)
+      println(kinesisClient.describeStream(kinesisStream))
     } catch {
       case awsEx : AmazonClientException =>
-        println("\nCheck you are logged in to AWS using ADFS (aws-adfs login --profile <ProfileType> --adfs-host <hostName> --region <some-region>)\n")
+        println(kinesisStream + "\nCheck you are logged in to AWS using ADFS (aws-adfs login --profile <ProfileType> --adfs-host <hostName> --region <some-region>)\n")
         throw awsEx
       case ex : Exception => throw ex
     }
   }
 }
+
+
+

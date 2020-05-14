@@ -9,7 +9,7 @@ class PutRecordsInKinesisStream extends Simulation{
 
   private val batchSize = Helpers.getEnvOrDefault("BatchSize", 20)
   private val testDuration = Helpers.getEnvOrDefault("TestDuration", 1)
-  private val kinesisStreamName =  Helpers.getEnvOrDefault("kinesis-stream","cache-perf-essentials")
+  private val kinesisStreamName =  "Test_First_Kinesis_Stream"
 
   val config = new EventConfig(Event.Event1)
 
