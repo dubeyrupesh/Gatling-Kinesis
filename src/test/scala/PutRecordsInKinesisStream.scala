@@ -7,8 +7,8 @@ import scala.concurrent.duration._
 
 class PutRecordsInKinesisStream extends Simulation{
 
-  private val batchSize = Helpers.getEnvOrDefault("BatchSize", 20)
-  private val testDuration = Helpers.getEnvOrDefault("TestDuration", 1)
+  private val batchSize = Helpers.getEnvOrDefault("BatchSize", 500)
+  private val testDuration = Helpers.getEnvOrDefault("TestDuration", 2)
   private val kinesisStreamName =  "Test_First_Kinesis_Stream"
 
   val config = new EventConfig(Event.Event1)
